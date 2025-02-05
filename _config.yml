@@ -1,6 +1,6 @@
 defaults:
   - scope:
-      path: "https://dallowen.github.io/error/404/"
+      path: ""
       type: "404"
     values:
       layout: "default"
