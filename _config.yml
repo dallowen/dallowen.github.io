@@ -4,3 +4,4 @@ defaults:
       type: "404"
     values:
       layout: "default"
+      permalink: https://dallowen.github.io/error/404/ # Adding a permalink
