@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +39,7 @@
             margin-bottom: 20px;
         }
         .art-gallery img {
-            width: calc(33.33% - 20px);
+            width: calc(25% - 20px); /* Adjusted width for smaller images */
             margin: 10px;
             border: 2px solid #ddd;
             border-radius: 5px;
@@ -78,28 +79,108 @@
             bottom: 0;
             width: 100%;
         }
+
+        /* Popup styling */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+            border-radius: 8px;
+            text-align: left; /* Left align text */
+        }
+        .popup h2 {
+            margin-top: 0;
+        }
+        .popup .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Add space between buttons */
+            margin-top: 20px;
+        }
+        .popup .button-container button {
+            padding: 8px 15px;
+            background-color: #C79052;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px; /* Smaller font size */
+        }
+        .popup .button-container button:hover {
+            background-color: #AF6A1C;
+        }
+        .popup .button-container a {
+            padding: 8px 15px;
+            background-color: #C79052;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px; /* Smaller font size */
+        }
+        .popup .button-container a:hover {
+            background-color: #AF6A1C;
+        }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="banner">
         <h1>Dallowen</h1>
     </div>
-<div class="art-gallery">
+    <div class="art-gallery">
         <h2>Gallery</h2>
         <img src="https://dallowen.github.io/assets/banner.png" alt="Digital painting">
     </div>
     <div class="social-media">
-        <h2>Follow me on:</h2>
-        <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
-        <a href="https://facebook.com/yourprofile" target="_blank">Facebook</a>
-        <a href="https://instagram.com/yourprofile" target="_blank">Instagram</a>
+        <a href="javascript:void(0)" onclick="showPopup()"><h2>Request Draw</h2></a>
     </div>
     <footer>
         &copy; <span id="year"></span> Dallowen. All rights reserved.
     </footer>
 
+    <!-- Popup -->
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup" id="popup">
+        <h2>Request Draw</h2>
+        <p><strong>Consent for Future Contacts:</strong> By sending an email, you agree that your email address may be used for future correspondence related to our services or activities. If you prefer not to receive future communications, you can opt out at any time.</br></br> 
+        <strong>No NSFW Content:</strong> Please do not send any Not Safe For Work (NSFW) content, including explicit or inappropriate images, drawings, or messages. We maintain a respectful and professional environment for all correspondences.</br></br> 
+        <strong>Confidentiality:</strong> We respect your privacy and will not share your email address or any personal information with third parties without your explicit consent, except as required by law.</br></br> 
+        <strong>Data Storage:</strong> Your email and any personal information will be securely stored in accordance with our data protection policies. We take appropriate measures to ensure the security and confidentiality of your data.</p>
+        <div class="button-container">
+            <a href="mailto:dallowen.art@gmail.com?subject=Draw%20order.&body=Hello%20Dallowen.%0AI%20want%20a%20draw%20about%3A%20%0AShare%20draw%20in%20the%20main%20page%3A%20%5BYES%2FNO%5D%0AI%20want%20to%20get%20contacted%3A%20%5BYES%2FNO%5D" class="send-email">Send e-mail</a>
+            <button onclick="hidePopup()">Close</button>
+        </div>
+    </div>
+
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('popupOverlay').style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
     </script>
 </body>
 </html>
